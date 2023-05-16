@@ -23,7 +23,10 @@ def main():
                     print("NO connection. Finishing...")
                     break
 
-            print(f"Received request '{data}'")
+                print(f"Received request '{data}'")
+                response = "Operation received"
+                # do stuff
+                conn.sendall(response.encode("utf-8"))
 
 if __name__ == "__main__":
     main()
