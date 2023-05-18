@@ -1,8 +1,23 @@
 import socket
 import json
+import logging
+import datetime 
 
-HOST = "127.0.0.1"  # The server's hostname or IP address
-PORT = 5050  # The port used by the server
+# Definição de constantes de cores para impressão no terminal
+HEADER = '\033[95m'
+OKBLUE = '\033[94m'
+OKCYAN = '\033[96m'
+OKGREEN = '\033[92m'
+WARNING = '\033[93m'
+FAIL = '\033[91m'
+
+# Configuração do log para registrar mensagens em um arquivo
+logging.basicConfig(filename='logs/client.log', encoding='utf-8', level=logging.DEBUG)
+
+HOST = "127.0.0.1"  # O endereço IP ou nome do host do servidor
+PORT = 5050  # A porta usada pelo servidor
+
+# Funções para cada operação CRUD
 
 def insert():
     key = input("Please select the key to insert: ")
@@ -14,7 +29,7 @@ def read():
     return {"opcode": 2, "key": key}
 
 def update():
-    key = input("Please select the key to update:")
+    key = input("Please select the key to update: ")
     value = input("Please select the value to update: ")
     return {"opcode": 3, "key": key, "value": value}
 
@@ -22,10 +37,20 @@ def delete():
     key = input("Please select the key (key) to delete: ")
     return {"opcode": 4, "key": key}
 
+def close(s):
+    # Registra no log o fechamento da conexão
+    logging.info(f"{datetime.datetime.now()}: Closing connection and gracefully stopping.")
+    print(OKBLUE + f"Closing connection, bye!")
+    data = json.dumps({"opcode": 5}).encode('UTF-8')  # Codifica os dados
+    s.sendall(data)  # Envia os dados codificados pelo socket
+    exit(0)
 
-def operation():
+def operation(s):
+    # Loop para solicitar a operação a ser executada ao usuário
     while True:
-        opcode = input("What operation would you like to do?\n1.Insert.\n2.Read\n3.Update\n4.Delete\nPlease select a number: ")
+        opcode = input(HEADER + "What operation would you like to do?\n1.Insert.\n2.Read"\
+                       "\n3.Update\n4.Delete\n5.Close connection\nPlease select a number: ")
+        # Utiliza a estrutura "match" para determinar a operação com base no opcode
         match int(opcode):
             case 1:
                 return insert()
@@ -35,43 +60,46 @@ def operation():
                 return update()
             case 4:
                 return delete()
+            case 5:
+                return close(s)
             case _:
-                print("Operation not permited, plase try again.")
+                print(WARNING + "Operation not permitted, please try again.")
 
 def main():
-
-    # Create the client socket
+    # Cria o socket do cliente
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-        # Try to connect to server Server
+        # Tenta se conectar ao servidor
         try:
             s.connect((HOST, PORT))
         except ConnectionRefusedError:
             s.close()
-            print("Error: Could not connect to server server")
+            logging.error(f"{datetime.datetime.now()}: Error: Could not connect to server server")
             exit()
         
-        print(f"Connected to server on port {PORT}...")
+        print(OKGREEN + f"Connected to server on port {PORT}...")
 
-
-        # Client input
+        # Loop principal do cliente
         while True:
-            req = json.dumps(operation())
+            req = json.dumps(operation(s))  # Codifica a operação para JSON
 
-            data = req.encode('UTF-8') # Encode data
+            data = req.encode('UTF-8')  # Codifica os dados
 
-            s.sendall(data) # Send encoded data through the socket
+            s.sendall(data)  # Envia os dados codificados pelo socket
 
-            s.settimeout(1.0) # Timeout (1 second)
+            s.settimeout(1.0)  # Timeout de 1 segundo
 
-            # Try to wait for an answer from Server
+            # Espera pela resposta do servidor
             try:
-                data = s.recv(1024) # Received data from server (buffer 1024 bytes)
-                data = json.loads(data.decode("utf-8")) # Decode data
-                print(data['res'])
+                data = s.recv(1024)  # Recebe os dados do servidor (buffer de 1024 bytes)
+                data = json.loads(data.decode("utf-8"))  # Decodifica os dados
+                print(OKBLUE + "------------------------------------")
+                print(OKGREEN + "\nServer response: ", data['res'], "\n")
+                print(OKBLUE + "------------------------------------")
             except socket.timeout:
-                print("No data was received from server.")
+                print(FAIL + "No data was received from server, timeout.")
+                logging.error(f"{datetime.datetime.now()}: Server timeout.")
             except:
                 s.close()
 
