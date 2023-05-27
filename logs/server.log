@@ -1,1 +1,6 @@
 
+INFO:root:2023-05-27 15:58:15.084083: >>> Server 5050 connected to client on socket ('127.0.0.1', 49698)
+INFO:root:2023-05-27 16:00:19.190668: >>> Server 5050 connected to client on socket ('127.0.0.1', 54446)
+INFO:root:2023-05-27 16:00:31.570448: >>> Server 5050 connected to client on socket ('127.0.0.1', 54068)
+INFO:root:2023-05-27 16:01:02.041905: >>> Server 5050 connected to client on socket ('127.0.0.1', 49476)
+INFO:root:2023-05-27 16:06:31.277452: >>> Server 5050 connected to client on socket ('127.0.0.1', 49066)

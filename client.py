@@ -1,4 +1,5 @@
 import socket
+import ssl
 import json
 import logging
 import datetime 
@@ -13,6 +14,9 @@ FAIL = '\033[91m'
 
 # Configuração do log para registrar mensagens em um arquivo
 logging.basicConfig(filename='logs/client.log', encoding='utf-8', level=logging.DEBUG)
+
+context = ssl.create_default_context()
+context.load_verify_locations("certificate.pem")
 
 HOST = "127.0.0.1"  # O endereço IP ou nome do host do servidor
 PORT = 5050  # A porta usada pelo servidor
@@ -48,7 +52,7 @@ def close(s):
 def operation(s):
     # Loop para solicitar a operação a ser executada ao usuário
     while True:
-        opcode = input(HEADER + "What operation would you like to do?\n1.Insert.\n2.Read"\
+        opcode = input(HEADER + "What operation would you like to do?\n1.Insert\n2.Read"\
                        "\n3.Update\n4.Delete\n5.Close connection\nPlease select a number: ")
         # Utiliza a estrutura "match" para determinar a operação com base no opcode
         match int(opcode):
@@ -67,41 +71,42 @@ def operation(s):
 
 def main():
     # Cria o socket do cliente
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        with context.wrap_socket(sock, server_hostname='127.0.0.1', do_handshake_on_connect = False) as s:
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-        # Tenta se conectar ao servidor
-        try:
-            s.connect((HOST, PORT))
-        except ConnectionRefusedError:
-            s.close()
-            logging.error(f"{datetime.datetime.now()}: Error: Could not connect to server server")
-            exit()
-        
-        print(OKGREEN + f"Connected to server on port {PORT}...")
-
-        # Loop principal do cliente
-        while True:
-            req = json.dumps(operation(s))  # Codifica a operação para JSON
-
-            data = req.encode('UTF-8')  # Codifica os dados
-
-            s.sendall(data)  # Envia os dados codificados pelo socket
-
-            s.settimeout(1.0)  # Timeout de 1 segundo
-
-            # Espera pela resposta do servidor
+            # Tenta se conectar ao servidor
             try:
-                data = s.recv(1024)  # Recebe os dados do servidor (buffer de 1024 bytes)
-                data = json.loads(data.decode("utf-8"))  # Decodifica os dados
-                print(OKBLUE + "------------------------------------")
-                print(OKGREEN + "\nServer response: ", data['res'], "\n")
-                print(OKBLUE + "------------------------------------")
-            except socket.timeout:
-                print(FAIL + "No data was received from server, timeout.")
-                logging.error(f"{datetime.datetime.now()}: Server timeout.")
-            except:
+                s.connect((HOST, PORT))
+            except ConnectionRefusedError:
                 s.close()
+                logging.error(f"{datetime.datetime.now()}: Error: Could not connect to server server")
+                exit()
+            
+            print(OKGREEN + f"Connected to server on port {PORT}...")
+
+            # Loop principal do cliente
+            while True:
+                req = json.dumps(operation(s))  # Codifica a operação para JSON
+
+                data = req.encode('UTF-8')  # Codifica os dados
+
+                s.sendall(data)  # Envia os dados codificados pelo socket
+
+                s.settimeout(1.0)  # Timeout de 1 segundo
+
+                # Espera pela resposta do servidor
+                try:
+                    data = s.recv(1024)  # Recebe os dados do servidor (buffer de 1024 bytes)
+                    data = json.loads(data.decode("utf-8"))  # Decodifica os dados
+                    print(OKBLUE + "------------------------------------")
+                    print(OKGREEN + "\nServer response: ", data['res'], "\n")
+                    print(OKBLUE + "------------------------------------")
+                except socket.timeout:
+                    print(FAIL + "No data was received from server, timeout.")
+                    logging.error(f"{datetime.datetime.now()}: Server timeout.")
+                except:
+                    s.close()
 
 if __name__ == '__main__':
     main()
