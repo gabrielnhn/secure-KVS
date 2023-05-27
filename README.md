@@ -1,7 +1,8 @@
 # What to do?
  
  - [x] Python client /to do TLS/
- - [ ] Python server with redis (redis-py) 
- - [ ] CRUD (CREATE, READ, UPDATE, DELETE) 
- - [ ] Use TLS to make communication secure 
+ - [x] Python server with redis (redis-py) 
+ - [x] CRUD (CREATE, READ, UPDATE, DELETE) 
+ - [x] Use TLS to make communication secure
+ - [ ] Demonstrar autenticidade, sigilo e integridade 
  - [ ] YouTube video 
