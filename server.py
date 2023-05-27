@@ -16,9 +16,15 @@ FAIL = '\033[91m'
 # Configuração do log para registrar mensagens em um arquivo
 logging.basicConfig(filename='logs/server.log', encoding='utf-8', level=logging.DEBUG)
 
+# Definição do contexto do protocolo SSL para usar o TLS
 context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-context.load_verify_locations("certificate.crt")
-context.load_cert_chain("certificate.crt", "key.pem")
+
+# Verifica e carrega certificado
+context.load_verify_locations("ssl/certificate.crt")
+context.load_cert_chain("ssl/certificate.crt", "ssl/key.pem")
+
+# Não checa o hostname do assinador do certificado
+context.check_hostname = False
 
 
 HOST = '127.0.0.1'  # Endereço IP para associar o socket
@@ -68,6 +74,7 @@ def process_recv(data):
 
 
 def main():
+
     global context
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Cria um socket TCP
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Define as opções do socket

@@ -1,13 +1,4 @@
 
-INFO:root:2023-05-27 15:58:15.084083: >>> Server 5050 connected to client on socket ('127.0.0.1', 49698)
-INFO:root:2023-05-27 16:00:19.190668: >>> Server 5050 connected to client on socket ('127.0.0.1', 54446)
-INFO:root:2023-05-27 16:00:31.570448: >>> Server 5050 connected to client on socket ('127.0.0.1', 54068)
-INFO:root:2023-05-27 16:01:02.041905: >>> Server 5050 connected to client on socket ('127.0.0.1', 49476)
-INFO:root:2023-05-27 16:06:31.277452: >>> Server 5050 connected to client on socket ('127.0.0.1', 49066)
-INFO:root:2023-05-27 16:08:15.867373: >>> Server 5050 connected to client on socket ('127.0.0.1', 37880)
-INFO:root:2023-05-27 16:14:37.265991: >>> Server 5050 connected to client on socket ('127.0.0.1', 42092)
-INFO:root:2023-05-27 16:16:48.963868: >>> Server 5050 connected to client on socket ('127.0.0.1', 46080)
-INFO:root:2023-05-27 16:16:58.805655: Received request {'opcode': 1, 'key': 'Tentativa', 'value': 'teste'}
-INFO:root:2023-05-27 16:16:58.807401: Sending request {"res": "Inserted"}
-INFO:root:2023-05-27 16:17:03.071822: Received request {'opcode': 2, 'key': 'Tentativa'}
-INFO:root:2023-05-27 16:17:03.072139: Sending request {"res": "teste"}
+INFO:root:2023-05-27 17:09:26.472376: >>> Server 5050 connected to client on socket ('127.0.0.1', 51524)
+INFO:root:2023-05-27 17:09:30.980522: Received request {'opcode': 2, 'key': 'Hishida'}
+INFO:root:2023-05-27 17:09:30.982230: Sending request {"res": "gol"}
