@@ -15,8 +15,8 @@ FAIL = '\033[91m'
 # Configuração do log para registrar mensagens em um arquivo
 logging.basicConfig(filename='logs/client.log', encoding='utf-8', level=logging.DEBUG)
 
-context = ssl.create_default_context()
-context.load_verify_locations("certificate.pem")
+#context = ssl.create_default_context()
+#context.load_verify_locations("certificate.pem")
 
 HOST = "127.0.0.1"  # O endereço IP ou nome do host do servidor
 PORT = 5050  # A porta usada pelo servidor
@@ -72,7 +72,7 @@ def operation(s):
 def main():
     # Cria o socket do cliente
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        with context.wrap_socket(sock, server_hostname='127.0.0.1', do_handshake_on_connect = False) as s:
+        with ssl.wrap_socket(sock, keyfile="key.pem", certfile="certificate.pem") as s:
             s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
             # Tenta se conectar ao servidor

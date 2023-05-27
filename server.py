@@ -16,7 +16,7 @@ FAIL = '\033[91m'
 # Configuração do log para registrar mensagens em um arquivo
 logging.basicConfig(filename='logs/server.log', encoding='utf-8', level=logging.DEBUG)
 
-context = ssl.create_default_context()
+#context = ssl.create_default_context()
 
 HOST = '127.0.0.1'  # Endereço IP para associar o socket
 PORT = 5050  # Número da porta para escutar
@@ -66,33 +66,34 @@ def process_recv(data):
 
 def main():
     global context
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Cria um socket TCP
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Define as opções do socket
-    sock.bind((HOST, PORT))  # Associa o socket ao endereço IP e porta especificados
-    print(OKGREEN + f"Listening on port {PORT}...")
-    sock.listen()  # Aguarda por conexões de entrada
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Cria um socket TCP
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Define as opções do socket
+    
+    with ssl.wrap_socket(s, server_side=True, keyfile="key.pem", certfile="certificate.pem") as sock:
+        sock.bind((HOST, PORT))  # Associa o socket ao endereço IP e porta especificados
+        print(OKGREEN + f"Listening on port {PORT}...")
+        sock.listen()  # Aguarda por conexões de entrada
 
-    conn, addr = sock.accept()  # Aceita uma conexão de um cliente
+        conn, addr = sock.accept()  # Aceita uma conexão de um cliente
 
-    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-    context.load_cert_chain("certificate.pem", "key.pem")
+        #context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        #context.load_cert_chain("certificate.pem", "key.pem")
 
-    with conn:
-        with context.wrap_socket(sock, server_side=True) as s:
-                logging.info(f"{datetime.datetime.now()}: >>> Server {PORT} connected to client on socket {addr}")
-                while True:
-                    data = conn.recv(1024)  # Recebe dados do cliente (máximo de 1024 bytes)
-                    data = json.loads(data.decode("utf-8"))  # Decodifica os dados recebidos de bytes para string
-                    if not data:
-                        s.close()  # Fecha o socket
-                        logging.error(FAIL + "NO connection. Finishing...")
-                        print("No connection received. Closing.")
-                        break
+        with conn:
+                    logging.info(f"{datetime.datetime.now()}: >>> Server {PORT} connected to client on socket {addr}")
+                    while True:
+                        data = conn.recv(1024)  # Recebe dados do cliente (máximo de 1024 bytes)
+                        data = json.loads(data.decode("utf-8"))  # Decodifica os dados recebidos de bytes para string
+                        if not data:
+                            s.close()  # Fecha o socket
+                            logging.error(FAIL + "NO connection. Finishing...")
+                            print("No connection received. Closing.")
+                            break
 
-                    logging.info(f"{datetime.datetime.now()}: Received request {data}")
-                    response = process_recv(data)
-                    logging.info(f"{datetime.datetime.now()}: Sending request {json.dumps(response)}")
-                    conn.sendall(json.dumps(response).encode("utf-8"))  # Envia a resposta de volta para o cliente
+                        logging.info(f"{datetime.datetime.now()}: Received request {data}")
+                        response = process_recv(data)
+                        logging.info(f"{datetime.datetime.now()}: Sending request {json.dumps(response)}")
+                        conn.sendall(json.dumps(response).encode("utf-8"))  # Envia a resposta de volta para o cliente
 
 if __name__ == "__main__":
     main()
