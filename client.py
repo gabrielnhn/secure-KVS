@@ -1,8 +1,11 @@
+#! /bin/python3
+
 import socket
 import ssl
 import json
 import logging
 import datetime 
+import sys
 
 # Definição de constantes de cores para impressão no terminal
 HEADER = '\033[95m'
@@ -77,45 +80,50 @@ def operation(s):
                 print(WARNING + "Operation not permitted, please try again.")
 
 def main():
+    if len(sys.argv) > 1:
+        opts = sys.argv[1]
 
     global context
     # Cria o socket do cliente
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-        with context.wrap_socket(sock, server_hostname = 'localhost') as s:
-            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-            # Tenta se conectar ao servidor
+        if len(sys.argv) > 1:
+            if opts == '-ssl':
+                sock = context.wrap_socket(sock, server_hostname = HOST)
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+        # Tenta se conectar ao servidor
+        try:
+            sock.connect((HOST, PORT))
+        except ConnectionRefusedError:
+            sock.close()
+            logging.error(f"{datetime.datetime.now()}: Error: Could not connect to server server")
+            exit()
+        
+        print(OKGREEN + f"Connected to server on port {PORT}...")
+
+        # Loop principal do cliente
+        while True:
+            req = json.dumps(operation(sock))  # Codifica a operação para JSON
+
+            data = req.encode('UTF-8')  # Codifica os dados
+
+            sock.sendall(data)  # Envia os dados codificados pelo socket
+
+            sock.settimeout(1.0)  # Timeout de 1 segundo
+
+            # Espera pela resposta do servidor
             try:
-                s.connect((HOST, PORT))
-            except ConnectionRefusedError:
-                s.close()
-                logging.error(f"{datetime.datetime.now()}: Error: Could not connect to server server")
-                exit()
-            
-            print(OKGREEN + f"Connected to server on port {PORT}...")
-
-            # Loop principal do cliente
-            while True:
-                req = json.dumps(operation(s))  # Codifica a operação para JSON
-
-                data = req.encode('UTF-8')  # Codifica os dados
-
-                s.sendall(data)  # Envia os dados codificados pelo socket
-
-                s.settimeout(1.0)  # Timeout de 1 segundo
-
-                # Espera pela resposta do servidor
-                try:
-                    data = s.recv(1024)  # Recebe os dados do servidor (buffer de 1024 bytes)
-                    data = json.loads(data.decode("utf-8"))  # Decodifica os dados
-                    print(OKBLUE + "------------------------------------")
-                    print(OKGREEN + "\nServer response: ", data['res'], "\n")
-                    print(OKBLUE + "------------------------------------")
-                except socket.timeout:
-                    print(FAIL + "No data was received from server, timeout.")
-                    logging.error(f"{datetime.datetime.now()}: Server timeout.")
-                except:
-                    s.close()
+                data = sock.recv(1024)  # Recebe os dados do servidor (buffer de 1024 bytes)
+                data = json.loads(data.decode("utf-8"))  # Decodifica os dados
+                print(OKBLUE + "------------------------------------")
+                print(OKGREEN + "\nServer response: ", data['res'], "\n")
+                print(OKBLUE + "------------------------------------")
+            except socket.timeout:
+                print(FAIL + "No data was received from server, timeout.")
+                logging.error(f"{datetime.datetime.now()}: Server timeout.")
+            except:
+                sock.close()
 
 if __name__ == '__main__':
     main()

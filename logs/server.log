@@ -2,3 +2,24 @@
 INFO:root:2023-05-27 17:09:26.472376: >>> Server 5050 connected to client on socket ('127.0.0.1', 51524)
 INFO:root:2023-05-27 17:09:30.980522: Received request {'opcode': 2, 'key': 'Hishida'}
 INFO:root:2023-05-27 17:09:30.982230: Sending request {"res": "gol"}
+INFO:root:2023-05-28 13:31:20.952279: >>> Server 5050 connected to client on socket ('127.0.0.1', 38746)
+INFO:root:2023-05-28 13:31:27.648150: Received request {'opcode': 1, 'key': 'abc', 'value': 'def'}
+INFO:root:2023-05-28 13:31:27.650256: Sending request {"res": "Inserted"}
+INFO:root:2023-05-28 13:31:30.838961: Received request {'opcode': 2, 'key': 'abc'}
+INFO:root:2023-05-28 13:31:30.839308: Sending request {"res": "def"}
+INFO:root:2023-05-28 13:31:59.050303: >>> Server 5050 connected to client on socket ('127.0.0.1', 49940)
+INFO:root:2023-05-28 13:32:04.061646: Received request {'opcode': 1, 'key': 'k', 'value': 'l'}
+INFO:root:2023-05-28 13:32:04.063588: Sending request {"res": "Inserted"}
+INFO:root:2023-05-28 13:32:06.078461: Received request {'opcode': 2, 'key': 'k'}
+INFO:root:2023-05-28 13:32:06.078749: Sending request {"res": "l"}
+INFO:root:2023-05-28 13:32:09.509886: Received request {'opcode': 2, 'key': 'abc'}
+INFO:root:2023-05-28 13:32:09.510328: Sending request {"res": "def"}
+INFO:root:2023-05-28 13:32:12.597880: Received request {'opcode': 2, 'key': 'Hishida'}
+INFO:root:2023-05-28 13:32:12.598305: Sending request {"res": "gol"}
+INFO:root:2023-05-28 13:32:15.077788: Received request {'opcode': 5}
+INFO:root:2023-05-28 13:32:15.077940: Closing connection via client.
+INFO:root:2023-05-28 13:34:05.472038: >>> Server 5050 connected to client on socket ('127.0.0.1', 33586)
+INFO:root:2023-05-28 13:34:16.767128: Received request {'opcode': 2, 'key': 'Hishida'}
+INFO:root:2023-05-28 13:34:16.769477: Sending request {"res": "gol"}
+INFO:root:2023-05-28 13:34:18.095202: Received request {'opcode': 5}
+INFO:root:2023-05-28 13:34:18.095314: Closing connection via client.
