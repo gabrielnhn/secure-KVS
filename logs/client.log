@@ -4,3 +4,6 @@ ERROR:root:2023-05-28 13:31:09.677552: Error: Could not connect to server server
 INFO:root:2023-05-28 13:32:15.077416: Closing connection and gracefully stopping.
 ERROR:root:2023-05-28 13:33:49.379161: Error: Could not connect to server server
 INFO:root:2023-05-28 13:34:18.094903: Closing connection and gracefully stopping.
+ERROR:root:2023-05-29 21:26:41.686911: Error: Could not connect to server server
+INFO:root:2023-05-29 21:33:50.843185: Closing connection and gracefully stopping.
+ERROR:root:2023-05-29 21:35:45.245775: Error: Could not connect to server server
