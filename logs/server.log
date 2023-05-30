@@ -137,3 +137,9 @@ INFO:root:2023-05-30 18:54:12.484358: Received request {'opcode': 2, 'key': 'Luz
 INFO:root:2023-05-30 18:54:12.484690: Sending request {"res": "Luzinha"}
 INFO:root:2023-05-30 18:54:29.843215: Received request {'opcode': 5}
 INFO:root:2023-05-30 18:54:29.843320: Closing connection via client.
+INFO:root:2023-05-30 18:58:15.289900: >>> Server 5050 connected to client on socket ('127.0.0.1', 51082)
+INFO:root:2023-05-30 18:58:56.217254: >>> Server 5050 connected to client on socket ('127.0.0.1', 55942)
+INFO:root:2023-05-30 18:59:04.533187: Received request {'opcode': 2, 'key': 'Hishida'}
+INFO:root:2023-05-30 18:59:04.534880: Sending request {"res": "Value not found for key Hishida"}
+INFO:root:2023-05-30 18:59:13.395448: Received request {'opcode': 2, 'key': 'Luzia'}
+INFO:root:2023-05-30 18:59:13.395812: Sending request {"res": "Luzinha"}
