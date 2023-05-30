@@ -7,3 +7,12 @@ INFO:root:2023-05-28 13:34:18.094903: Closing connection and gracefully stopping
 ERROR:root:2023-05-29 21:26:41.686911: Error: Could not connect to server server
 INFO:root:2023-05-29 21:33:50.843185: Closing connection and gracefully stopping.
 ERROR:root:2023-05-29 21:35:45.245775: Error: Could not connect to server server
+INFO:root:2023-05-30 10:52:30.043766: Closing connection and gracefully stopping.
+INFO:root:2023-05-30 10:55:28.492249: Closing connection and gracefully stopping.
+ERROR:root:2023-05-30 10:56:23.374280: Error: Could not connect to server server
+INFO:root:2023-05-30 10:57:17.300611: Closing connection and gracefully stopping.
+INFO:root:2023-05-30 10:59:06.700870: Closing connection and gracefully stopping.
+ERROR:root:2023-05-30 11:05:28.292598: Error: Could not connect to server server
+INFO:root:2023-05-30 11:11:04.783890: Closing connection and gracefully stopping.
+INFO:root:2023-05-30 11:11:57.720279: Closing connection and gracefully stopping.
+ERROR:root:2023-05-30 11:22:39.158873: Error: Could not connect to server server

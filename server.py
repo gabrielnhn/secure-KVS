@@ -20,11 +20,11 @@ FAIL = '\033[91m'
 logging.basicConfig(filename='logs/server.log', encoding='utf-8', level=logging.DEBUG)
 
 # Definição do contexto do protocolo SSL para usar o TLS
-context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 
 # Verifica e carrega certificado
 context.load_verify_locations("ssl/certificate.crt")
-context.load_cert_chain("ssl/certificate.crt", "ssl/key.pem")
+context.load_cert_chain(certfile = "ssl/certificate.crt", keyfile = "ssl/key.pem")
 
 # Não checa o hostname do assinador do certificado
 context.check_hostname = False

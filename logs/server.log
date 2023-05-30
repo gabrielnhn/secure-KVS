@@ -59,3 +59,43 @@ INFO:root:2023-05-29 21:40:48.960638: Received request {'opcode': 1, 'key': '1',
 INFO:root:2023-05-29 21:40:48.962566: Sending request {"res": "Inserted"}
 INFO:root:2023-05-29 22:20:44.763101: >>> Server 5050 connected to client on socket ('127.0.0.1', 44450)
 INFO:root:2023-05-29 22:25:51.204377: >>> Server 5050 connected to client on socket ('127.0.0.1', 52806)
+INFO:root:2023-05-30 10:49:20.843214: >>> Server 5050 connected to client on socket ('127.0.0.1', 44570)
+INFO:root:2023-05-30 10:50:09.475450: Received request {'opcode': 2, 'key': 'Hishida'}
+INFO:root:2023-05-30 10:51:24.674624: >>> Server 5050 connected to client on socket ('127.0.0.1', 54724)
+INFO:root:2023-05-30 10:51:37.019916: Received request {'opcode': 1, 'key': 'Test', 'value': 'adm'}
+INFO:root:2023-05-30 10:51:37.021529: Sending request {"res": "Inserted"}
+INFO:root:2023-05-30 10:52:28.854595: >>> Server 5050 connected to client on socket ('127.0.0.1', 46992)
+INFO:root:2023-05-30 10:52:30.044047: Received request {'opcode': 5}
+INFO:root:2023-05-30 10:52:30.044138: Closing connection via client.
+INFO:root:2023-05-30 10:53:36.703072: >>> Server 5050 connected to client on socket ('127.0.0.1', 36092)
+INFO:root:2023-05-30 10:53:45.868191: Received request {'opcode': 2, 'key': 'Test'}
+INFO:root:2023-05-30 10:53:45.869842: Sending request {"res": "adm"}
+INFO:root:2023-05-30 10:54:42.892364: Received request {'opcode': 1, 'key': 'nova', 'value': 'chave'}
+INFO:root:2023-05-30 10:54:42.892678: Sending request {"res": "Inserted"}
+INFO:root:2023-05-30 10:55:28.492637: Received request {'opcode': 5}
+INFO:root:2023-05-30 10:55:28.492727: Closing connection via client.
+INFO:root:2023-05-30 10:56:57.222517: >>> Server 5050 connected to client on socket ('127.0.0.1', 47094)
+INFO:root:2023-05-30 10:57:07.364867: Received request {'opcode': 1, 'key': 'ander', 'value': 'son'}
+INFO:root:2023-05-30 10:57:07.366428: Sending request {"res": "Inserted"}
+INFO:root:2023-05-30 10:57:10.500781: Received request {'opcode': 2, 'key': 'ander'}
+INFO:root:2023-05-30 10:57:10.501103: Sending request {"res": "son"}
+INFO:root:2023-05-30 10:57:17.300956: Received request {'opcode': 5}
+INFO:root:2023-05-30 10:57:17.301049: Closing connection via client.
+INFO:root:2023-05-30 10:57:26.001934: >>> Server 5050 connected to client on socket ('127.0.0.1', 34254)
+INFO:root:2023-05-30 10:57:30.708770: Received request {'opcode': 2, 'key': 'ander'}
+INFO:root:2023-05-30 10:57:30.710352: Sending request {"res": "son"}
+INFO:root:2023-05-30 10:59:06.701241: Received request {'opcode': 5}
+INFO:root:2023-05-30 10:59:06.701347: Closing connection via client.
+INFO:root:2023-05-30 11:06:24.336527: >>> Server 5050 connected to client on socket ('127.0.0.1', 39516)
+INFO:root:2023-05-30 11:06:43.959487: Received request {'opcode': 1, 'key': 'Testando', 'value': 'agora'}
+INFO:root:2023-05-30 11:06:43.961216: Sending request {"res": "Inserted"}
+INFO:root:2023-05-30 11:11:04.784238: Received request {'opcode': 5}
+INFO:root:2023-05-30 11:11:04.784356: Closing connection via client.
+INFO:root:2023-05-30 11:11:18.642151: >>> Server 5050 connected to client on socket ('127.0.0.1', 52508)
+INFO:root:2023-05-30 11:11:23.832511: Received request {'opcode': 1, 'key': 'testando', 'value': 'abc'}
+INFO:root:2023-05-30 11:11:23.834362: Sending request {"res": "Inserted"}
+INFO:root:2023-05-30 11:11:57.720615: Received request {'opcode': 5}
+INFO:root:2023-05-30 11:11:57.720774: Closing connection via client.
+INFO:root:2023-05-30 11:22:16.473902: >>> Server 5050 connected to client on socket ('127.0.0.1', 50278)
+INFO:root:2023-05-30 11:22:16.474121: Received request {'orcode': 1, 'key': 'testando', 'value': 'dados'}
+INFO:root:2023-05-30 11:56:40.139013: >>> Server 5050 connected to client on socket ('127.0.0.1', 56448)
