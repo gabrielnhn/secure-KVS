@@ -97,6 +97,7 @@ def main():
             logging.info(f"{datetime.datetime.now()}: >>> Server {PORT} connected to client on socket {addr}")
             while True:
                 data = conn.recv(1024)  # Recebe dados do cliente (máximo de 1024 bytes)
+                print(data)
                 data = json.loads(data.decode("utf-8"))  # Decodifica os dados recebidos de bytes para string
                 if not data:
                     sock.close()  # Fecha o socket
