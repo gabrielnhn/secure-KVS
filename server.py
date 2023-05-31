@@ -8,6 +8,9 @@ import logging
 import datetime
 import sys
 
+# Tamanho do buffer 
+BUFFER_SIZE = 1024
+
 # Definição de constantes de cores para impressão no terminal
 HEADER = '\033[95m'
 OKBLUE = '\033[94m'
@@ -96,8 +99,7 @@ def main():
     with conn:
             logging.info(f"{datetime.datetime.now()}: >>> Server {PORT} connected to client on socket {addr}")
             while True:
-                data = conn.recv(1024)  # Recebe dados do cliente (máximo de 1024 bytes)
-                print(data)
+                data = conn.recv(BUFFER_SIZE)  # Recebe dados do cliente (máximo de BUFFER_SIZE bytes)
                 data = json.loads(data.decode("utf-8"))  # Decodifica os dados recebidos de bytes para string
                 if not data:
                     sock.close()  # Fecha o socket

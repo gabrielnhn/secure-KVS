@@ -7,6 +7,9 @@ import logging
 import datetime 
 import sys
 
+# Tamanho do buffer
+BUFFER_SIZE = 1024
+
 # Definição de constantes de cores para impressão no terminal
 HEADER = '\033[95m'
 OKBLUE = '\033[94m'
@@ -114,7 +117,7 @@ def main():
 
             # Espera pela resposta do servidor
             try:
-                data = sock.recv(1024)  # Recebe os dados do servidor (buffer de 1024 bytes)
+                data = sock.recv(BUFFER_SIZE)  # Recebe os dados do servidor (buffer de BUFFER_SIZE bytes)
                 data = json.loads(data.decode("utf-8"))  # Decodifica os dados
                 print(OKBLUE + "------------------------------------")
                 print(OKGREEN + "\nServer response: ", data['res'], "\n")
