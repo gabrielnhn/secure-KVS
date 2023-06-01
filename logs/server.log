@@ -1,3 +1,13 @@
 
 INFO:root:2023-05-31 23:25:14.486194: >>> Server 5050 connected to client on socket ('127.0.0.1', 48488)
 INFO:root:2023-06-01 00:36:29.963376: >>> Server 5050 connected to client on socket ('127.0.0.1', 47672)
+INFO:root:2023-06-01 11:35:14.712671: >>> Server 5050 connected to client on socket ('127.0.0.1', 38924)
+INFO:root:2023-06-01 11:37:56.299434: >>> Server 5050 connected to client on socket ('127.0.0.1', 54402)
+INFO:root:2023-06-01 11:38:06.676807: Received request {'opcode': 1, 'key': 'Thomas', 'value': 'Todt'}
+INFO:root:2023-06-01 11:38:06.678517: Sending request {"res": "Inserted"}
+INFO:root:2023-06-01 11:38:38.213187: Received request {'opcode': 5}
+INFO:root:2023-06-01 11:38:38.213327: Closing connection via client.
+INFO:root:2023-06-01 11:38:49.151613: >>> Server 5050 connected to client on socket ('127.0.0.1', 46264)
+INFO:root:2023-06-01 11:39:11.645077: Received request {'opcode': 1, 'key': 'Thominhas', 'value': 'Todtinho'}
+INFO:root:2023-06-01 11:39:11.647668: Sending request {"res": "Inserted"}
+INFO:root:2023-06-01 11:39:42.448858: >>> Server 5050 connected to client on socket ('127.0.0.1', 43384)
