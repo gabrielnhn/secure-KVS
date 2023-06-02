@@ -2,3 +2,10 @@
 INFO:root:2023-06-01 11:35:26.308377: Closing connection and gracefully stopping.
 INFO:root:2023-06-01 11:38:38.212765: Closing connection and gracefully stopping.
 ERROR:root:2023-06-01 11:38:43.852864: Error: Could not connect to server server
+ERROR:root:2023-06-02 11:24:24.928374: Error: Could not connect to server server
+ERROR:root:2023-06-02 11:24:31.071894: Error: Could not connect to server server
+ERROR:root:2023-06-02 11:25:44.818486: Server timeout.
+INFO:root:2023-06-02 11:26:17.322711: Closing connection and gracefully stopping.
+ERROR:root:2023-06-02 11:31:06.435253: Server timeout.
+ERROR:root:2023-06-02 11:36:06.299227: Server timeout.
+ERROR:root:2023-06-02 11:38:41.884756: Server timeout.

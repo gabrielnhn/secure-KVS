@@ -11,3 +11,21 @@ INFO:root:2023-06-01 11:38:49.151613: >>> Server 5050 connected to client on soc
 INFO:root:2023-06-01 11:39:11.645077: Received request {'opcode': 1, 'key': 'Thominhas', 'value': 'Todtinho'}
 INFO:root:2023-06-01 11:39:11.647668: Sending request {"res": "Inserted"}
 INFO:root:2023-06-01 11:39:42.448858: >>> Server 5050 connected to client on socket ('127.0.0.1', 43384)
+INFO:root:2023-06-02 11:24:38.630383: >>> Server 5050 connected to client on socket ('127.0.0.1', 52304)
+INFO:root:2023-06-02 11:24:43.137276: Received request {'opcode': 1, 'key': 'mafe', 'value': 'teste'}
+INFO:root:2023-06-02 11:24:43.139154: Sending request {"res": "Inserted"}
+INFO:root:2023-06-02 11:24:45.425318: Received request {'opcode': 2, 'key': 'mafe'}
+INFO:root:2023-06-02 11:24:45.425663: Sending request {"res": "teste"}
+INFO:root:2023-06-02 11:31:07.611453: >>> Server 5050 connected to client on socket ('127.0.0.1', 55440)
+INFO:root:2023-06-02 11:31:07.611737: Received request {'opcode': 2, 'key': 'mafe'}
+INFO:root:2023-06-02 11:31:07.613924: Sending request {"res": "teste"}
+INFO:root:2023-06-02 11:32:13.871047: >>> Server 5050 connected to client on socket ('127.0.0.1', 53572)
+INFO:root:2023-06-02 11:35:55.728262: >>> Server 5050 connected to client on socket ('127.0.0.1', 57836)
+INFO:root:2023-06-02 11:36:05.299081: Received request {'opcode': 2, 'key': 'mafe'}
+INFO:root:2023-06-02 11:36:05.301442: Sending request {"res": "teste"}
+INFO:root:2023-06-02 11:37:00.160163: >>> Server 5050 connected to client on socket ('127.0.0.1', 45688)
+INFO:root:2023-06-02 11:38:29.680977: >>> Server 5050 connected to client on socket ('127.0.0.1', 59770)
+INFO:root:2023-06-02 11:44:19.630255: >>> Server 5050 connected to client on socket ('127.0.0.1', 35560)
+INFO:root:2023-06-02 11:45:54.193402: >>> Server 5050 connected to client on socket ('127.0.0.1', 48810)
+INFO:root:2023-06-02 11:47:00.189026: Received request {'opcode': 2, 'key': 'mafe'}
+INFO:root:2023-06-02 11:47:00.190824: Sending request {"res": "teste"}
