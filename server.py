@@ -80,8 +80,11 @@ def process_recv(data):
 
 
 def main():
+    is_ssl = False
     if len(sys.argv) > 1:
-        opts = sys.argv[1]
+        if "-ssl" in sys.argv:
+            is_ssl = True
+
 
     global context
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Cria um socket TCP
@@ -91,9 +94,8 @@ def main():
     print(OKGREEN + f"Listening on port {PORT}...")
     sock.listen()  # Aguarda por conexões de entrada
 
-    if len(sys.argv) > 1:
-        if opts == '-ssl':
-            sock = context.wrap_socket(sock, server_side = True)
+    if is_ssl:
+        sock = context.wrap_socket(sock, server_side = True)
     conn, addr = sock.accept()  # Aceita uma conexão de um cliente
 
     with conn:

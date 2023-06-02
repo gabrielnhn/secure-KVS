@@ -32,7 +32,7 @@ context.load_cert_chain(certfile = "ssl/certificate.crt", keyfile = "ssl/key.pem
 context.check_hostname = False
 
 HOST = "127.0.0.1"  # O endereço IP ou nome do host do servidor
-PORT = 5051  # A porta usada pelo servidor
+PORT = 5051 # A porta usada pelo servidor
 
 # Funções para cada operação CRUD
 
@@ -68,6 +68,11 @@ def operation(s):
         opcode = input(HEADER + "What operation would you like to do?\n1.Insert\n2.Read"\
                        "\n3.Update\n4.Delete\n5.Close connection\nPlease select a number: ")
         # Utiliza a estrutura "match" para determinar a operação com base no opcode
+
+        if opcode.isdigit() == False:
+            print(FAIL + "Please insert a valid operation.\n")
+            continue
+        
         match int(opcode):
             case 1:
                 return insert()
@@ -80,7 +85,7 @@ def operation(s):
             case 5:
                 return close(s)
             case _:
-                print(WARNING + "Operation not permitted, please try again.")
+                print(WARNING + "Operation not permitted, please try again.\n")
 
 def main():
     is_ssl = False
