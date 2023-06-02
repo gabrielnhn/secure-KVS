@@ -12,6 +12,9 @@ client_conn, addr = client.accept()  # Aceita uma conexão de um cliente
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Cria um socket de servidor
 server.connect(('localhost', 5050))  # Conecta ao servidor
 
+client_conn.settimeout(0.1)
+client.settimeout(0.1)
+server.settimeout(0.1)
 def modify_bits(data, index):
     data_bytearray = bytearray(data)
     data_bytearray[index] ^= 1
@@ -45,27 +48,33 @@ def tls_handshake():
 
 def main():
 
-    tls_handshake()
+    # tls_handshake()
 
     while True:
 
-        package = client_conn.recv(BUFFER_SIZE)  # Recebe dados do cliente
-        print("Cliente enviou:")
-        hexdump(package)
+        try:
+            package = client_conn.recv(BUFFER_SIZE)  # Recebe dados do cliente
+            print("Cliente enviou:")
+            hexdump(package)
+        except:
+            package = None
+        # package = modify_bits(package, (len(package)-5))
 
-        package = modify_bits(package, (len(package)-5))
+        # print("Modificado para:")
+        # hexdump(package)
+        if package:
+            print("Enviando para o servidor...")
+            server.sendall(package)  # Envia os dados modificados para o servidor
 
-        print("Modificado para:")
-        hexdump(package)
+        try:
+            package = server.recv(BUFFER_SIZE)  # Recebe dados do servidor
+            print("Servidor enviou:")
+            hexdump(package)
+        except:
+            package = None
 
-        print("Enviando para o servidor...")
-        server.sendall(package)  # Envia os dados modificados para o servidor
-
-        package = server.recv(BUFFER_SIZE)  # Recebe dados do servidor
-        print("Servidor enviou:")
-        hexdump(package)
-
-        print("Enviando para o cliente...")
-        client_conn.sendall(package)  # Envia os dados recebidos para o cliente
+        if package:
+            print("Enviando para o cliente...")
+            client_conn.sendall(package)  # Envia os dados recebidos para o cliente
 
 main()
