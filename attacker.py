@@ -22,8 +22,8 @@ FAIL = '\033[91m'
 logging.basicConfig(filename='logs/attacker.log', encoding='utf-8', level=logging.DEBUG)
 
 # Cria um contexto padrão
-context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
-# context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="./ssl/server/server.crt")
+# context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="./ssl/server/server.crt")
 
 # Verifica e carrega certificado
 context.load_cert_chain(certfile = "./ssl/attacker/attacker.crt", keyfile = "./ssl/attacker/attacker.key")
@@ -107,7 +107,21 @@ def main():
             logging.error(f"{datetime.datetime.now()}: Error: Could not connect to server server")
             exit()
         
-        print(OKGREEN + f"Connected to server on port {PORT}...")
+        print(OKGREEN + f"Connecting to server on port {PORT}...")
+        try:
+            data = sock.recv(BUFFER_SIZE)  # Recebe os dados do servidor (buffer de BUFFER_SIZE bytes)
+            data = json.loads(data.decode("utf-8"))  # Decodifica os dados
+            print(OKBLUE + "------------------------------------")
+            print(OKGREEN + "\nServer response: ", data['res'], "\n")
+            print(OKBLUE + "------------------------------------")
+        except socket.timeout:
+            print(FAIL + "No data was received from server, timeout.")
+            logging.error(f"{datetime.datetime.now()}: Server timeout.")
+        except Exception as e:
+            print(f"EXCEPTION {e}")
+            sock.close()
+            exit()
+
 
         # Loop principal do cliente
         while True:

@@ -1,1 +1,3 @@
 INFO:root:2023-06-03 13:18:11.618373: Closing connection and gracefully stopping.
+ERROR:root:2023-06-03 14:41:11.737320: Error: Could not connect to server server
+ERROR:root:2023-06-03 14:45:21.299869: Error: Could not connect to server server

@@ -62,3 +62,8 @@ INFO:root:2023-06-03 14:26:00.308962: Received request {'opcode': 2, 'key': 'alo
 INFO:root:2023-06-03 14:26:00.312814: Sending request {"res": "bom dia"}
 INFO:root:2023-06-03 14:26:04.517666: Received request {'opcode': 5}
 INFO:root:2023-06-03 14:26:04.517782: Closing connection via client.
+INFO:root:2023-06-03 14:45:25.134696: >>> Server 5050 connected to client on socket ('127.0.0.1', 59564)
+INFO:root:2023-06-03 14:47:36.669873: >>> Server 5050 connected to client on socket ('127.0.0.1', 44654)
+INFO:root:2023-06-03 14:50:01.859185: >>> Server 5050 connected to client on socket ('127.0.0.1', 45652)
+INFO:root:2023-06-03 14:50:06.851140: Received request {'opcode': 1, 'key': 'bruh', 'value': 'bruh'}
+INFO:root:2023-06-03 14:50:06.853878: Sending request {"res": "Inserted"}
