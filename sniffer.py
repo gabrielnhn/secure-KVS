@@ -7,10 +7,13 @@ client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Cria um socket de 
 client.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Define as opções do socket
 client.bind(('localhost', 5051))  # Liga o socket de cliente ao localhost e à porta 5051
 client.listen()  # Aguarda conexões de entrada
+print("Listening on port 5051...")
 client_conn, addr = client.accept()  # Aceita uma conexão de um cliente
+print("Conectado ao cliente")
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Cria um socket de servidor
 server.connect(('localhost', 5050))  # Conecta ao servidor
+print("Conectado ao servidor")
 
 client_conn.settimeout(0.1)
 client.settimeout(0.1)
@@ -31,6 +34,7 @@ def hexdump(package):
 
 def main():
 
+    print("Aguardando pacotes")
     count = 1
     while True:
 
@@ -38,6 +42,9 @@ def main():
             package = client_conn.recv(BUFFER_SIZE)  # Recebe dados do cliente
             print(f"Mensagem {count} - Cliente enviou:")
             hexdump(package)
+        except KeyboardInterrupt:
+            print("Encerrando sniffer")
+            exit()
         except:
             package = None
       
@@ -49,6 +56,9 @@ def main():
             package = server.recv(BUFFER_SIZE)  # Recebe dados do servidor
             print(f"Mensagem {count} - Servidor enviou:")
             hexdump(package)
+        except KeyboardInterrupt:
+            print("Encerrando sniffer")
+            exit()
         except:
             package = None
 

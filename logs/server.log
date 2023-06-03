@@ -40,3 +40,8 @@ INFO:root:2023-06-02 11:44:19.630255: >>> Server 5050 connected to client on soc
 INFO:root:2023-06-02 11:45:54.193402: >>> Server 5050 connected to client on socket ('127.0.0.1', 48810)
 INFO:root:2023-06-02 11:47:00.189026: Received request {'opcode': 2, 'key': 'mafe'}
 INFO:root:2023-06-02 11:47:00.190824: Sending request {"res": "teste"}
+INFO:root:2023-06-03 12:39:33.798620: >>> Server 5050 connected to client on socket ('127.0.0.1', 59690)
+INFO:root:2023-06-03 12:40:58.175863: >>> Server 5050 connected to client on socket ('127.0.0.1', 35008)
+INFO:root:2023-06-03 13:05:23.333418: Received request {'opcode': 2, 'key': 'alo'}
+INFO:root:2023-06-03 13:05:23.336252: Sending request {"res": "Value not found for key alo"}
+INFO:root:2023-06-03 13:09:12.293631: >>> Server 5050 connected to client on socket ('127.0.0.1', 54260)
