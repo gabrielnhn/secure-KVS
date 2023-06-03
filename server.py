@@ -10,9 +10,9 @@ import datetime
 import sys
 
 
-parser = argparse.ArgumentParser(description='Gaze estimation using L2CSNet.')
-parser.add_argument(
-    '-unsafe', dest='unsafe', help='dont use SSL') 
+parser = argparse.ArgumentParser(description='SSL Server')
+parser.add_argument('-unsafe', dest='unsafe', help='dont use SSL', type=bool, default=False)
+parser.add_argument('-p', dest='PORT', help='PORT', default=5050, type=int) 
 
 args = parser.parse_args()
 
@@ -41,7 +41,8 @@ context.check_hostname = False
 
 
 HOST = '127.0.0.1'  # Endereço IP para associar o socket
-PORT = 5050  # Número da porta para escutar
+# PORT = 5050  # Número da porta para escutar
+PORT = args.PORT
 db = redis.Redis(host = HOST, port=6379, decode_responses=True)
 
 # Função para processar os dados recebidos do cliente

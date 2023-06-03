@@ -70,3 +70,36 @@ INFO:root:2023-06-03 14:50:06.853878: Sending request {"res": "Inserted"}
 INFO:root:2023-06-03 14:54:20.081418: >>> Server 5050 connected to client on socket ('127.0.0.1', 56244)
 INFO:root:2023-06-03 15:16:25.344077: >>> Server 5050 connected to client on socket ('127.0.0.1', 36096)
 INFO:root:2023-06-03 15:16:33.959347: >>> Server 5050 connected to client on socket ('127.0.0.1', 40804)
+INFO:root:2023-06-03 15:22:05.899760: >>> Server 5050 connected to client on socket ('127.0.0.1', 58980)
+INFO:root:2023-06-03 15:22:36.141128: >>> Server 5050 connected to client on socket ('127.0.0.1', 40512)
+INFO:root:2023-06-03 15:22:45.721828: >>> Server 5050 connected to client on socket ('127.0.0.1', 55322)
+INFO:root:2023-06-03 15:25:46.525544: >>> Server 5050 connected to client on socket ('127.0.0.1', 44444)
+INFO:root:2023-06-03 15:26:07.099045: Received request {'opcode': 2, 'key': 'bruh'}
+INFO:root:2023-06-03 15:26:07.101722: Sending request {"res": "bruh"}
+INFO:root:2023-06-03 15:26:38.194655: >>> Server 5050 connected to client on socket ('127.0.0.1', 35958)
+INFO:root:2023-06-03 15:26:44.010405: Received request {'opcode': 2, 'key': 'bruh'}
+INFO:root:2023-06-03 15:26:44.016155: Sending request {"res": "bruh"}
+INFO:root:2023-06-03 15:28:53.061936: >>> Server 5050 connected to client on socket ('127.0.0.1', 48998)
+INFO:root:2023-06-03 15:30:11.480576: >>> Server 5050 connected to client on socket ('127.0.0.1', 46978)
+INFO:root:2023-06-03 15:32:17.750481: >>> Server 5050 connected to client on socket ('127.0.0.1', 47986)
+INFO:root:2023-06-03 15:35:01.566154: >>> Server 5050 connected to client on socket ('127.0.0.1', 48526)
+INFO:root:2023-06-03 15:35:38.333507: >>> Server 5050 connected to client on socket ('127.0.0.1', 34012)
+INFO:root:2023-06-03 15:35:40.157824: Received request {'opcode': 2, 'key': 'bruh'}
+INFO:root:2023-06-03 15:35:40.161027: Sending request {"res": "bruh"}
+INFO:root:2023-06-03 15:38:34.863814: >>> Server 5050 connected to client on socket ('127.0.0.1', 49564)
+INFO:root:2023-06-03 15:38:51.433596: >>> Server 5050 connected to client on socket ('127.0.0.1', 43154)
+INFO:root:2023-06-03 15:39:59.945437: >>> Server 5050 connected to client on socket ('127.0.0.1', 53770)
+INFO:root:2023-06-03 15:40:16.651017: >>> Server 5050 connected to client on socket ('127.0.0.1', 59712)
+INFO:root:2023-06-03 15:41:31.393426: >>> Server 5050 connected to client on socket ('127.0.0.1', 47248)
+INFO:root:2023-06-03 15:42:01.306087: >>> Server 5050 connected to client on socket ('127.0.0.1', 32814)
+INFO:root:2023-06-03 15:44:05.877705: >>> Server 5050 connected to client on socket ('127.0.0.1', 39572)
+INFO:root:2023-06-03 15:44:50.006461: >>> Server 5050 connected to client on socket ('127.0.0.1', 50184)
+INFO:root:2023-06-03 15:45:58.901713: >>> Server 5050 connected to client on socket ('127.0.0.1', 39368)
+INFO:root:2023-06-03 15:46:52.782047: >>> Server 5050 connected to client on socket ('127.0.0.1', 56616)
+INFO:root:2023-06-03 15:47:23.658121: >>> Server 5050 connected to client on socket ('127.0.0.1', 44576)
+INFO:root:2023-06-03 15:47:59.031304: >>> Server 5050 connected to client on socket ('127.0.0.1', 46324)
+INFO:root:2023-06-03 15:48:16.673399: >>> Server 5050 connected to client on socket ('127.0.0.1', 43430)
+INFO:root:2023-06-03 15:50:25.220579: >>> Server 5050 connected to client on socket ('127.0.0.1', 52532)
+INFO:root:2023-06-03 15:50:52.217603: >>> Server 5050 connected to client on socket ('127.0.0.1', 54834)
+INFO:root:2023-06-03 15:51:20.804409: >>> Server 5050 connected to client on socket ('127.0.0.1', 37958)
+INFO:root:2023-06-03 15:52:13.691930: >>> Server 5050 connected to client on socket ('127.0.0.1', 37440)

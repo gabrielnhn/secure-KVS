@@ -9,12 +9,14 @@ import logging
 import datetime 
 import sys
 
-parser = argparse.ArgumentParser(description='Gaze estimation using L2CSNet.')
+parser = argparse.ArgumentParser(description='SSL client')
 parser.add_argument(
-    '-unsafe', dest='unsafe', help='dont use SSL')
+    '-unsafe', dest='unsafe', help='dont use SSL', type=bool, default=False)
 parser.add_argument(
     '-sus', dest='sus', help='I solemly swear that Im up to no good.',
-    type=int, default=0)   
+    type=int, default=0)
+parser.add_argument('-p', dest='PORT', help='PORT', default=5050, type=int) 
+
 
 args = parser.parse_args()
 
@@ -58,7 +60,8 @@ else:
 
 
 HOST = "127.0.0.1"  # O endereço IP ou nome do host do servidor
-PORT = 5050 # A porta usada pelo servidor
+PORT = args.PORT
+# PORT = 5050 # A porta usada pelo servidor
 
 # Funções para cada operação CRUD
 
@@ -172,8 +175,11 @@ def main():
             except socket.timeout:
                 print(FAIL + "No data was received from server, timeout.")
                 logging.error(f"{datetime.datetime.now()}: Server timeout.")
-            except:
+            except Exception as e:
+                print(FAIL + f"Exception {e}")
+
                 sock.close()
+                exit()
 
 if __name__ == '__main__':
     main()

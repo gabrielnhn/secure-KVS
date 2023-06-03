@@ -16,3 +16,8 @@ ERROR:root:2023-06-02 11:38:41.884756: Server timeout.
 ERROR:root:2023-06-03 13:39:43.991199: Error: Could not connect to server server
 ERROR:root:2023-06-03 14:25:48.115672: Error: Could not connect to server server
 INFO:root:2023-06-03 14:26:04.517294: Closing connection and gracefully stopping.
+ERROR:root:2023-06-03 15:26:34.035731: Error: Could not connect to server server
+ERROR:root:2023-06-03 15:28:54.020121: Server timeout.
+ERROR:root:2023-06-03 15:32:13.410212: Error: Could not connect to server server
+ERROR:root:2023-06-03 15:48:12.532783: Error: Could not connect to server server
+ERROR:root:2023-06-03 15:50:46.938672: Error: Could not connect to server server

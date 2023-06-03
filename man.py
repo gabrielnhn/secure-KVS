@@ -1,11 +1,18 @@
 #! /bin/python3
 
 import socket
+import argparse
+
+parser = argparse.ArgumentParser(description="MAN in the middle")
+parser.add_argument('-m', dest='modify', help='Should modify bit', type=str, default=True) 
+args = parser.parse_args()
+
 
 BUFFER_SIZE = 1024  # Tamanho do buffer para receber os dados
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Cria um socket de cliente
 client.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Define as opções do socket
 client.bind(('localhost', 5051))  # Liga o socket de cliente ao localhost e à porta 5051
+print("Listening on port 5051...")
 client.listen()  # Aguarda conexões de entrada
 client_conn, addr = client.accept()  # Aceita uma conexão de um cliente
 
@@ -60,22 +67,32 @@ def tls_handshake():
     package = server.recv(BUFFER_SIZE)  # Recebe dados do servidor
     client_conn.sendall(package)  # Envia os dados recebidos para o cliente
     
+    package = server.recv(BUFFER_SIZE)  # Recebe dados do servidor
+    client_conn.sendall(package)  # Envia os dados recebidos para o cliente
+    
+
     print("Handshake do TLS concluído.")
 
 def main():
 
     tls_handshake()
 
+    mod = args.modify
+
     while True:
+        print(f"Should modify == {mod}")
 
         package = client_conn.recv(BUFFER_SIZE)  # Recebe dados do cliente
         print("Cliente enviou:")
+        if not package:
+            print("\tNADA")
+            exit()
         hexdump(package)
 
-        package = modify_bits(package, (len(package)-5))
-
-        print("Modificado para:")
-        hexdump(package)
+        if mod:
+            package = modify_bits(package, (len(package)-5))
+            print("Modificado para:")
+            hexdump(package)
 
         print("Enviando para o servidor...")
         server.sendall(package)  # Envia os dados modificados para o servidor
