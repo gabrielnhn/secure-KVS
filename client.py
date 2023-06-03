@@ -22,11 +22,10 @@ FAIL = '\033[91m'
 logging.basicConfig(filename='logs/client.log', encoding='utf-8', level=logging.DEBUG)
 
 # Cria um contexto padrão
-context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="ssl/server/server.crt")
 
 # Verifica e carrega certificado
-context.load_verify_locations("ssl/certificate.crt")
-context.load_cert_chain(certfile = "ssl/certificate.crt", keyfile = "ssl/key.pem")
+context.load_cert_chain(certfile = "ssl/client/client.crt", keyfile = "ssl/client/client.key")
 
 # Não checa o hostname do assinador do certificado
 context.check_hostname = False
@@ -98,7 +97,7 @@ def main():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
 
         if is_ssl:
-            sock = context.wrap_socket(sock, server_hostname = HOST)
+            sock = context.wrap_socket(sock, server_hostname = HOST, server_side=False)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
         # Tenta se conectar ao servidor

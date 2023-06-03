@@ -24,10 +24,11 @@ logging.basicConfig(filename='logs/server.log', encoding='utf-8', level=logging.
 
 # Definição do contexto do protocolo SSL para usar o TLS
 context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+context.verify_mode = ssl.CERT_REQUIRED
 
 # Verifica e carrega certificado
-context.load_verify_locations("ssl/certificate.crt")
-context.load_cert_chain(certfile = "ssl/certificate.crt", keyfile = "ssl/key.pem")
+context.load_cert_chain(certfile = "ssl/server/server.crt", keyfile = "ssl/server/server.key")
+context.load_verify_locations(cafile="ssl/client/client.crt")
 
 # Não checa o hostname do assinador do certificado
 context.check_hostname = False
