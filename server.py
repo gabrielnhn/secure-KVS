@@ -1,5 +1,6 @@
 #! /bin/python3
 
+import argparse
 import redis
 import json
 import socket
@@ -7,6 +8,13 @@ import ssl
 import logging
 import datetime
 import sys
+
+
+parser = argparse.ArgumentParser(description='Gaze estimation using L2CSNet.')
+parser.add_argument(
+    '-unsafe', dest='unsafe', help='dont use SSL') 
+
+args = parser.parse_args()
 
 # Tamanho do buffer 
 BUFFER_SIZE = 1024
@@ -79,10 +87,10 @@ def process_recv(data):
 
 
 def main():
-    is_ssl = False
-    if len(sys.argv) > 1:
-        if "-ssl" in sys.argv:
-            is_ssl = True
+    is_ssl = True
+
+    if args.unsafe:
+        is_ssl = False
 
 
     global context

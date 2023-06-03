@@ -1,11 +1,22 @@
 #! /bin/python3
 
+import argparse
+
 import socket
 import ssl
 import json
 import logging
 import datetime 
 import sys
+
+parser = argparse.ArgumentParser(description='Gaze estimation using L2CSNet.')
+parser.add_argument(
+    '-unsafe', dest='unsafe', help='dont use SSL')
+parser.add_argument(
+    '-sus', dest='sus', help='I solemly swear that Im up to no good.',
+    type=int, default=0)   
+
+args = parser.parse_args()
 
 # Tamanho do buffer
 BUFFER_SIZE = 1024
@@ -21,12 +32,30 @@ FAIL = '\033[91m'
 # Configuração do log para registrar mensagens em um arquivo
 logging.basicConfig(filename='logs/client.log', encoding='utf-8', level=logging.DEBUG)
 
-# Cria um contexto padrão
-context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="./ssl/server/server.crt")
 
-# Verifica e carrega certificado
-context.load_cert_chain(certfile = "./ssl/client/client.crt", keyfile = "./ssl/client/client.key")
-context.check_hostname = False
+if args.sus == 0:
+    ####### CLIENT LEGIT
+    # Cria um contexto padrão
+    context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="./ssl/server/server.crt")
+    # Verifica e carrega certificado
+    context.load_cert_chain(certfile = "./ssl/client/client.crt", keyfile = "./ssl/client/client.key")
+    context.check_hostname = False
+
+
+elif args.sus == 1:
+    ######### ATTACKER
+    # Cria um contexto padrão
+    context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="./ssl/server/server.crt")
+    context.load_cert_chain(certfile = "./ssl/attacker/attacker.crt", keyfile = "./ssl/attacker/attacker.key")
+    context.check_hostname = False
+
+
+else:
+    context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+    context.check_hostname = False
+    context.verify_mode = ssl.CERT_NONE
+
+
 
 HOST = "127.0.0.1"  # O endereço IP ou nome do host do servidor
 PORT = 5050 # A porta usada pelo servidor
@@ -85,10 +114,10 @@ def operation(s):
                 print(WARNING + "Operation not permitted, please try again.\n")
 
 def main():
-    is_ssl = False
-    if len(sys.argv) > 1:
-        if "-ssl" in sys.argv:
-            is_ssl = True
+    is_ssl = True
+
+    if args.unsafe:
+        is_ssl = False
 
     global context
     # Cria o socket do cliente
