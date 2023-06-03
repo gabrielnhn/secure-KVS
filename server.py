@@ -29,6 +29,7 @@ context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 context.verify_mode = ssl.CERT_REQUIRED
 context.load_cert_chain(certfile = "./ssl/server/server.crt", keyfile = "./ssl/server/server.key")
 context.load_verify_locations(cafile = "./ssl/client/client.crt")
+context.check_hostname = False
 
 
 HOST = '127.0.0.1'  # Endereço IP para associar o socket

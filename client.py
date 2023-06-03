@@ -26,6 +26,9 @@ context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="./ssl/serv
 
 # Verifica e carrega certificado
 context.load_cert_chain(certfile = "./ssl/client/client.crt", keyfile = "./ssl/client/client.key")
+context.check_hostname = False
+
+
 
 HOST = "127.0.0.1"  # O endereço IP ou nome do host do servidor
 PORT = 5050 # A porta usada pelo servidor

@@ -55,3 +55,4 @@ INFO:root:2023-06-03 13:18:09.458458: Received request {'opcode': 2, 'key': 'alo
 INFO:root:2023-06-03 13:18:09.460369: Sending request {"res": "bom dia"}
 INFO:root:2023-06-03 13:18:11.619448: Received request {'opcode': 5}
 INFO:root:2023-06-03 13:18:11.619554: Closing connection via client.
+INFO:root:2023-06-03 13:52:41.205314: >>> Server 5050 connected to client on socket ('127.0.0.1', 58894)
