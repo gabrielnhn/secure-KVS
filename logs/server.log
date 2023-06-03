@@ -45,3 +45,13 @@ INFO:root:2023-06-03 12:40:58.175863: >>> Server 5050 connected to client on soc
 INFO:root:2023-06-03 13:05:23.333418: Received request {'opcode': 2, 'key': 'alo'}
 INFO:root:2023-06-03 13:05:23.336252: Sending request {"res": "Value not found for key alo"}
 INFO:root:2023-06-03 13:09:12.293631: >>> Server 5050 connected to client on socket ('127.0.0.1', 54260)
+INFO:root:2023-06-03 13:12:04.010163: >>> Server 5050 connected to client on socket ('127.0.0.1', 49970)
+INFO:root:2023-06-03 13:12:13.630361: Received request {'opcode': 2, 'key': 'alo'}
+INFO:root:2023-06-03 13:12:13.632007: Sending request {"res": "Value not found for key alo"}
+INFO:root:2023-06-03 13:12:52.293394: Received request {'opcode': 1, 'key': 'alo', 'value': 'bom dia'}
+INFO:root:2023-06-03 13:12:52.293921: Sending request {"res": "Inserted"}
+INFO:root:2023-06-03 13:18:02.576328: >>> Server 5050 connected to client on socket ('127.0.0.1', 39018)
+INFO:root:2023-06-03 13:18:09.458458: Received request {'opcode': 2, 'key': 'alo'}
+INFO:root:2023-06-03 13:18:09.460369: Sending request {"res": "bom dia"}
+INFO:root:2023-06-03 13:18:11.619448: Received request {'opcode': 5}
+INFO:root:2023-06-03 13:18:11.619554: Closing connection via client.

@@ -22,16 +22,13 @@ FAIL = '\033[91m'
 logging.basicConfig(filename='logs/client.log', encoding='utf-8', level=logging.DEBUG)
 
 # Cria um contexto padrão
-context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="ssl/server/server.crt")
+context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile="./ssl/server/server.crt")
 
 # Verifica e carrega certificado
-context.load_cert_chain(certfile = "ssl/client/client.crt", keyfile = "ssl/client/client.key")
-
-# Não checa o hostname do assinador do certificado
-context.check_hostname = False
+context.load_cert_chain(certfile = "./ssl/client/client.crt", keyfile = "./ssl/client/client.key")
 
 HOST = "127.0.0.1"  # O endereço IP ou nome do host do servidor
-PORT = 5051 # A porta usada pelo servidor
+PORT = 5050 # A porta usada pelo servidor
 
 # Funções para cada operação CRUD
 
