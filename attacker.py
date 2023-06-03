@@ -108,6 +108,8 @@ def main():
             exit()
         
         print(OKGREEN + f"Connecting to server on port {PORT}...")
+        sock.settimeout(1.0)  # Timeout de 1 segundo
+
         try:
             data = sock.recv(BUFFER_SIZE)  # Recebe os dados do servidor (buffer de BUFFER_SIZE bytes)
             data = json.loads(data.decode("utf-8"))  # Decodifica os dados
@@ -117,6 +119,9 @@ def main():
         except socket.timeout:
             print(FAIL + "No data was received from server, timeout.")
             logging.error(f"{datetime.datetime.now()}: Server timeout.")
+            sock.close()
+            exit()
+
         except Exception as e:
             print(f"EXCEPTION {e}")
             sock.close()

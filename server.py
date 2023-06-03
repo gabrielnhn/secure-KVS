@@ -90,36 +90,38 @@ def main():
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Define as opções do socket
     sock.bind((HOST, PORT))  # Associa o socket ao endereço IP e porta especificados
 
-    print(OKGREEN + f"Listening on port {PORT}...")
-    sock.listen()  # Aguarda por conexões de entrada
+    while True:
 
-    if is_ssl:
-        sock = context.wrap_socket(sock, server_side = True)
+        print(OKGREEN + f"Listening on port {PORT}...")
+        sock.listen()  # Aguarda por conexões de entrada
 
-    try:
-        conn, addr = sock.accept()  # Aceita uma conexão de um cliente
-    except ssl.SSLError as e:
-        print(f"Connection REFUSED:\n\t##{e}##")
-        exit()
+        if is_ssl:
+            sock = context.wrap_socket(sock, server_side = True)
+
+        try:
+            conn, addr = sock.accept()  # Aceita uma conexão de um cliente
+        except ssl.SSLError as e:
+            print(f"Connection REFUSED:\n\t##{e}##")
+            continue
 
 
-    with conn:
-        conn.sendall(json.dumps({"res": f"CONNECTED"}).encode("utf-8"))  # Envia a resposta de volta para o cliente
+        with conn:
+            conn.sendall(json.dumps({"res": f"CONNECTED"}).encode("utf-8"))  # Envia a resposta de volta para o cliente
 
-        logging.info(f"{datetime.datetime.now()}: >>> Server {PORT} connected to client on socket {addr}")
-        while True:
-            data = conn.recv(BUFFER_SIZE)  # Recebe dados do cliente (máximo de BUFFER_SIZE bytes)
-            data = json.loads(data.decode("utf-8"))  # Decodifica os dados recebidos de bytes para string
-            if not data:
-                sock.close()  # Fecha o socket
-                logging.error(FAIL + "NO connection. Finishing...")
-                print("No connection received. Closing.") 
-                break
+            logging.info(f"{datetime.datetime.now()}: >>> Server {PORT} connected to client on socket {addr}")
+            while True:
+                data = conn.recv(BUFFER_SIZE)  # Recebe dados do cliente (máximo de BUFFER_SIZE bytes)
+                data = json.loads(data.decode("utf-8"))  # Decodifica os dados recebidos de bytes para string
+                if not data:
+                    sock.close()  # Fecha o socket
+                    logging.error(FAIL + "NO connection. Finishing...")
+                    print("No connection received. Closing.") 
+                    break
 
-            logging.info(f"{datetime.datetime.now()}: Received request {data}")
-            response = process_recv(data)
-            logging.info(f"{datetime.datetime.now()}: Sending request {json.dumps(response)}")
-            conn.sendall(json.dumps(response).encode("utf-8"))  # Envia a resposta de volta para o cliente
+                logging.info(f"{datetime.datetime.now()}: Received request {data}")
+                response = process_recv(data)
+                logging.info(f"{datetime.datetime.now()}: Sending request {json.dumps(response)}")
+                conn.sendall(json.dumps(response).encode("utf-8"))  # Envia a resposta de volta para o cliente
 
 if __name__ == "__main__":
     main()

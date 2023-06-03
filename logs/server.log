@@ -67,3 +67,4 @@ INFO:root:2023-06-03 14:47:36.669873: >>> Server 5050 connected to client on soc
 INFO:root:2023-06-03 14:50:01.859185: >>> Server 5050 connected to client on socket ('127.0.0.1', 45652)
 INFO:root:2023-06-03 14:50:06.851140: Received request {'opcode': 1, 'key': 'bruh', 'value': 'bruh'}
 INFO:root:2023-06-03 14:50:06.853878: Sending request {"res": "Inserted"}
+INFO:root:2023-06-03 14:54:20.081418: >>> Server 5050 connected to client on socket ('127.0.0.1', 56244)

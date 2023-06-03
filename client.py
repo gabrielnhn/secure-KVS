@@ -106,7 +106,9 @@ def main():
             logging.error(f"{datetime.datetime.now()}: Error: Could not connect to server server")
             exit()
         
-       print(OKGREEN + f"Connecting to server on port {PORT}...")
+        print(OKGREEN + f"Connecting to server on port {PORT}...")
+        sock.settimeout(1.0)  # Timeout de 1 segundo
+
         try:
             data = sock.recv(BUFFER_SIZE)  # Recebe os dados do servidor (buffer de BUFFER_SIZE bytes)
             data = json.loads(data.decode("utf-8"))  # Decodifica os dados
@@ -130,7 +132,6 @@ def main():
 
             sock.sendall(data)  # Envia os dados codificados pelo socket
 
-            sock.settimeout(1.0)  # Timeout de 1 segundo
 
             # Espera pela resposta do servidor
             try:
