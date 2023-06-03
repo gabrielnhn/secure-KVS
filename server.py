@@ -101,12 +101,13 @@ def main():
         try:
             conn, addr = sock.accept()  # Aceita uma conexão de um cliente
         except ssl.SSLError as e:
-            print(f"Connection REFUSED:\n\t##{e}##")
+            print(f"Connection REFUSED:\n\t##{e}##\n")
             continue
 
 
         with conn:
             conn.sendall(json.dumps({"res": f"CONNECTED"}).encode("utf-8"))  # Envia a resposta de volta para o cliente
+            print(f"Connected do client at {addr}")
 
             logging.info(f"{datetime.datetime.now()}: >>> Server {PORT} connected to client on socket {addr}")
             while True:
