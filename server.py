@@ -7,8 +7,6 @@ import socket
 import ssl
 import logging
 import datetime
-import sys
-
 
 parser = argparse.ArgumentParser(description='SSL Server')
 parser.add_argument('-unsafe', dest='unsafe', help='dont use SSL', type=bool, default=False)

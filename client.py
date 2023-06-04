@@ -1,13 +1,11 @@
 #! /bin/python3
 
 import argparse
-
 import socket
 import ssl
 import json
 import logging
 import datetime 
-import sys
 
 parser = argparse.ArgumentParser(description='SSL client')
 parser.add_argument(

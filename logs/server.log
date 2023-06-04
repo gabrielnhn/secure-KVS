@@ -103,3 +103,62 @@ INFO:root:2023-06-03 15:50:25.220579: >>> Server 5050 connected to client on soc
 INFO:root:2023-06-03 15:50:52.217603: >>> Server 5050 connected to client on socket ('127.0.0.1', 54834)
 INFO:root:2023-06-03 15:51:20.804409: >>> Server 5050 connected to client on socket ('127.0.0.1', 37958)
 INFO:root:2023-06-03 15:52:13.691930: >>> Server 5050 connected to client on socket ('127.0.0.1', 37440)
+INFO:root:2023-06-03 16:32:17.262862: >>> Server 5050 connected to client on socket ('127.0.0.1', 34802)
+INFO:root:2023-06-03 16:32:20.000058: Received request {'opcode': 5}
+INFO:root:2023-06-03 16:32:20.000332: Closing connection via client.
+INFO:root:2023-06-03 18:39:42.643607: >>> Server 5050 connected to client on socket ('127.0.0.1', 33248)
+INFO:root:2023-06-03 18:40:08.914702: >>> Server 5050 connected to client on socket ('127.0.0.1', 35070)
+INFO:root:2023-06-03 18:40:22.926650: Received request {'opcode': 1, 'key': 'Senha', 'value': '123admin'}
+INFO:root:2023-06-03 18:40:22.936463: Sending request {"res": "Inserted"}
+INFO:root:2023-06-03 18:40:27.544831: Received request {'opcode': 2, 'key': 'Senha'}
+INFO:root:2023-06-03 18:40:27.545267: Sending request {"res": "123admin"}
+INFO:root:2023-06-03 18:40:36.760965: Received request {'opcode': 3, 'key': 'Senha', 'value': '1234admin'}
+INFO:root:2023-06-03 18:40:36.762305: Sending request {"res": "Value 123admin update to 1234admin"}
+INFO:root:2023-06-03 18:40:46.662571: Received request {'opcode': 4, 'key': 'Senha'}
+INFO:root:2023-06-03 18:40:46.662895: Sending request {"res": "Deleted at Senha"}
+INFO:root:2023-06-03 18:40:50.469825: Received request {'opcode': 2, 'key': 'Senha'}
+INFO:root:2023-06-03 18:40:50.470727: Sending request {"res": "Value not found for key Senha"}
+INFO:root:2023-06-03 18:40:54.174848: Received request {'opcode': 5}
+INFO:root:2023-06-03 18:40:54.174955: Closing connection via client.
+INFO:root:2023-06-03 18:42:34.603250: >>> Server 5050 connected to client on socket ('127.0.0.1', 43976)
+INFO:root:2023-06-03 18:44:12.337912: >>> Server 5050 connected to client on socket ('127.0.0.1', 37526)
+INFO:root:2023-06-03 18:44:25.352343: Received request {'opcode': 5}
+INFO:root:2023-06-03 18:44:25.352477: Closing connection via client.
+INFO:root:2023-06-03 18:44:48.603518: >>> Server 5050 connected to client on socket ('127.0.0.1', 50764)
+INFO:root:2023-06-03 18:46:07.570707: >>> Server 5050 connected to client on socket ('127.0.0.1', 54692)
+INFO:root:2023-06-03 18:47:07.899157: >>> Server 5050 connected to client on socket ('127.0.0.1', 43242)
+INFO:root:2023-06-03 18:48:28.196328: >>> Server 5050 connected to client on socket ('127.0.0.1', 58260)
+INFO:root:2023-06-03 18:48:42.518950: Received request {'opcode': 1, 'key': 'Senha', 'value': '123admin'}
+INFO:root:2023-06-03 18:48:42.521237: Sending request {"res": "Inserted"}
+INFO:root:2023-06-03 18:48:53.340804: Received request {'opcode': 2, 'key': 'Senha'}
+INFO:root:2023-06-03 18:48:53.341237: Sending request {"res": "123admin"}
+INFO:root:2023-06-03 18:48:58.350339: Received request {'opcode': 3, 'key': 'Senha', 'value': '123admin'}
+INFO:root:2023-06-03 18:48:58.351040: Sending request {"res": "Value 123admin update to 123admin"}
+INFO:root:2023-06-03 18:49:02.358691: Received request {'opcode': 4, 'key': 'Senha'}
+INFO:root:2023-06-03 18:49:02.359043: Sending request {"res": "Deleted at Senha"}
+INFO:root:2023-06-03 18:49:05.765362: Received request {'opcode': 2, 'key': 'Senha'}
+INFO:root:2023-06-03 18:49:05.765728: Sending request {"res": "Value not found for key Senha"}
+INFO:root:2023-06-03 18:49:07.970167: Received request {'opcode': 5}
+INFO:root:2023-06-03 18:49:07.970293: Closing connection via client.
+INFO:root:2023-06-03 18:49:21.147393: >>> Server 5050 connected to client on socket ('127.0.0.1', 35224)
+INFO:root:2023-06-03 19:53:31.166323: >>> Server 5050 connected to client on socket ('127.0.0.1', 49368)
+INFO:root:2023-06-03 19:54:07.257035: Received request {'opcode': 1, 'key': 'senha', 'value': '123admin'}
+INFO:root:2023-06-03 19:54:07.260684: Sending request {"res": "Inserted"}
+INFO:root:2023-06-03 19:54:14.648909: Received request {'opcode': 2, 'key': 'senha'}
+INFO:root:2023-06-03 19:54:14.649456: Sending request {"res": "123admin"}
+INFO:root:2023-06-03 19:54:33.201037: Received request {'opcode': 3, 'key': 'senha', 'value': '1234admin'}
+INFO:root:2023-06-03 19:54:33.201968: Sending request {"res": "Value 123admin update to 1234admin"}
+INFO:root:2023-06-03 19:54:42.817124: Received request {'opcode': 4, 'key': 'senha'}
+INFO:root:2023-06-03 19:54:42.817677: Sending request {"res": "Deleted at senha"}
+INFO:root:2023-06-03 19:54:47.953490: Received request {'opcode': 2, 'key': 'senha'}
+INFO:root:2023-06-03 19:54:47.954010: Sending request {"res": "Value not found for key senha"}
+INFO:root:2023-06-03 19:54:52.265551: Received request {'opcode': 5}
+INFO:root:2023-06-03 19:54:52.265659: Closing connection via client.
+INFO:root:2023-06-03 19:57:17.600661: >>> Server 5050 connected to client on socket ('127.0.0.1', 39408)
+INFO:root:2023-06-03 19:57:43.945899: Received request {'opcode': 1, 'key': 'senha', 'value': '123admin'}
+INFO:root:2023-06-03 19:57:43.947883: Sending request {"res": "Inserted"}
+INFO:root:2023-06-03 19:59:26.233372: >>> Server 5050 connected to client on socket ('127.0.0.1', 48376)
+INFO:root:2023-06-03 19:59:59.896558: Received request {'opcode': 2, 'key': 'senha'}
+INFO:root:2023-06-03 19:59:59.898336: Sending request {"res": "123admin"}
+INFO:root:2023-06-03 20:00:16.977396: Received request {'opcode': 4, 'key': 'senha'}
+INFO:root:2023-06-03 20:00:16.977727: Sending request {"res": "Deleted at senha"}

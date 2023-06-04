@@ -5,6 +5,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description="MAN in the middle")
 parser.add_argument('-m', dest='modify', help='Should modify bit', type=str, default=True) 
+parser.add_argument('-unsafe', dest='unsafe', help='dont use SSL', type=bool, default=False)
 args = parser.parse_args()
 
 
@@ -67,17 +68,17 @@ def tls_handshake():
     package = server.recv(BUFFER_SIZE)  # Recebe dados do servidor
     client_conn.sendall(package)  # Envia os dados recebidos para o cliente
     
-    package = server.recv(BUFFER_SIZE)  # Recebe dados do servidor
-    client_conn.sendall(package)  # Envia os dados recebidos para o cliente
-    
-
     print("Handshake do TLS concluído.")
 
 def main():
 
-    tls_handshake()
+    if not args.unsafe:
+        tls_handshake()
 
     mod = args.modify
+    
+    package = server.recv(BUFFER_SIZE)  # Recebe dados do servidor
+    client_conn.sendall(package)  # Envia os dados recebidos para o cliente
 
     while True:
         print(f"Should modify == {mod}")
